@@ -17,15 +17,16 @@ import {
   Stack,
   Text,Input
 } from '@chakra-ui/react';
+import {Link as RLink} from 'react-router-dom'
 // import hello from '../../img/hello';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { PhoneIcon, AddIcon, WarningIcon,Search2Icon } from '@chakra-ui/icons'
 import 'font-awesome/css/font-awesome.min.css'
 // import { HiOutlineUserCircle } from 'react-icons/fa';
 // import { HiOutlineUserCircle } from 'react-icons/bi';
-
+import hello from '../img/hello';
 //HiOutlineUserCircle
- import logo from '../../img/logo.png';
+import logo from '../img/logo.png'
  import { FaUser,FaMapMarkerAlt,FaCartPlus } from "react-icons/fa";
 //  import {FontAwesomeIcon} from '@fortawesome/free-solid-svg-icons'
 //  import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
@@ -53,7 +54,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue('white', 'gray.900')} px={5} >
+      <Box bg={useColorModeValue('white', 'gray.900')}  px={6} >
         <Flex h={32}   alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -64,7 +65,9 @@ export default function Navbar() {
           />
           <HStack spacing={8} width="65%" alignItems={'center'} >
             <Box>
-<img width="100px" src={logo} />
+            <RLink to="/" >
+           <img width="100px" src={logo} />
+           </RLink>
 
             </Box>
             <HStack
@@ -83,10 +86,10 @@ export default function Navbar() {
               
               </Flex>
               <Button>  
-                <ul>
+                
 
                 <Search2Icon />
-              </ul>
+              
                 </Button>
               
             </HStack>
@@ -96,16 +99,22 @@ export default function Navbar() {
           {/* <Flex h={36} alignItems={'center'} justifyContent={'space-between'}>
            
             </Flex> */}
-            <Flex width="500px" border="2px solid red" justifyContent={'space-around'}>
-            <Text>
-            <FaUser/> Sign In</Text>
-          <Text>  <FaMapMarkerAlt />  Find a store</Text>
-          <Text>
+            <Flex width="500px" justifyContent={'space-around'}>
+              <RLink to="/signin">
+              <FaUser/> <span>Sign In</span>
+              </RLink >
+              <RLink to="/store">
+                <Text>
+              <FaMapMarkerAlt />  Find a store</Text>
+              </RLink>
             {/* <FontAwesomeIcon icon="fa-solid fa-cart-shopping" /> */}
-           
+           <RLink to="/cart"> Bag
+          <Text>
            <FaCartPlus />
-            Bag
+           
               </Text>
+
+           </RLink>
               </Flex>
           <Flex alignItems={'center'} justifyContent={"space-around"}>
             
