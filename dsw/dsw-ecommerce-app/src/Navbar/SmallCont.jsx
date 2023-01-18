@@ -1,14 +1,15 @@
 import { Box, Flex, Image, Text } from '@chakra-ui/react'
 import React from 'react'
-import logo from '../../img/logo.png';
+import logo from '../img/logo.png'
+
 
 function SmallCont() {
-  return <Box width={"50%"} margin="auto"  mt={"50px"}  border={"2px solid gray"}>
+  return <Box width={"50%"} margin="auto"  mt={"30px"}  border={"2px solid gray"}>
 <Flex justify={"space-between"} >
 <Box>
     <Flex justify={"space-between"}>
     <Box>
-        <Image width={"140px"} src={logo} fallbackSrc='https://via.placeholder.com/150' />
+        <Image width={"100px"} src={logo} fallbackSrc='https://via.placeholder.com/150' />
     </Box>
     <Box>
 
@@ -22,7 +23,7 @@ function SmallCont() {
 <Box border={"1px solid gray"}>
     <Flex justify={"space-between"}>
     <Box>
-        <Image width={"140px"} src={logo} fallbackSrc='https://via.placeholder.com/150' />
+        <Image width={"100px"} src={logo} fallbackSrc='https://via.placeholder.com/150' />
     </Box>
     <Box>
 

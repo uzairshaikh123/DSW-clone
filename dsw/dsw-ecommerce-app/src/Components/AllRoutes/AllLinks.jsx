@@ -1,11 +1,14 @@
 import React from 'react'
-
+import {Link as RLink} from 'react-router-dom'
 function AllLinks() {
   return<>
-  <Links to="/" ></Links>
-  <Links to="/signin" ></Links>
-  <Links to="/register" ></Links>
-  <Links to="/cart" ></Links>
+  <RLink to="/" ></RLink>
+  <RLink to="/signin" ></RLink>
+  <RLink to="/register" ></RLink>
+  <RLink to="/cart" ></RLink>
+  <RLink to="/store"></RLink>
+  <RLink to="/products"></RLink>
+  
   </>
 }
 
