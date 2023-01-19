@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios'
 import { Grid, GridItem } from '@chakra-ui/react'
 import {Link as RLink} from 'react-router-dom'
+import Modalfun from '../../Products/Modal';
 function ApiProd() {
   let arr = [
     {
@@ -75,16 +76,17 @@ function ApiProd() {
     <Heading  textAlign={"center"}>Our Picks For You</Heading>
  <Grid templateColumns='repeat(4, 1fr)' gap={10}>
   {arr.map((item)=>{
-return  <RLink to="/products" >
-<GridItem w='100%' key={item.id}>
+     return  <GridItem w='100%' key={item.id}>
+ <RLink to="/products" >
 <img src={item.img} alt="" />
 <Text>{item.name}</Text>
 <Text>Price: {item.price}</Text>
 <img width={"90px"} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRauOGLtNzVAWhLL34f14v15aXnVwFTVJM-qw&usqp=CAU" alt="" />
-      <Button mt={"20px"} variant='outline' colorScheme={'gray.900'}>Quick Add
-</Button>
- </GridItem>
  </RLink> 
+ <button className='add' variant='outline'><Modalfun name={item.name} img={item.img} desc={item.desc} price={item.price}/></button>
+
+     
+ </GridItem>
   })}
   
     
