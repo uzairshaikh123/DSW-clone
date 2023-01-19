@@ -13,6 +13,7 @@ import Footer from './Components/Pages/Footer';
 import ApiProd from './Components/Pages/ApiProd';
 import { useEffect, useState } from 'react';
 import SkeletonFun from './Components/Pages/Skeleton';
+import Progressfun from './Components/Pages/Progress';
 function Homepage() {
  const [progress,setprogress] = useState(false)
 
@@ -39,7 +40,11 @@ setprogress(true)
       <ApiProd />
       <Footer />
   
-    </div>:<SkeletonFun />
+    </div>:<div>
+
+        <SkeletonFun />
+       
+    </div>
 
 }
 

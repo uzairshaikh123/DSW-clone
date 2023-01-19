@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Heading } from '@chakra-ui/react'
 import React from 'react'
-
+import {Link as RLink} from 'react-router-dom'
 
 
 function BigPhotoCont({img}) {
@@ -13,8 +13,11 @@ On-Trend Sneakers Under $75
   </Heading>
 <Heading mt={"50px"} as='h4' size='md'>Your kind of boots at your kind of prices.</Heading>
 <Flex justifyContent={"space-around"}>
-<Button colorScheme={"red"}>Mens</Button>
+<RLink to="/products">
+  <Button colorScheme={"red"}>Mens</Button></RLink>
+  <RLink to="/products">
 <Button colorScheme={"red"}>Womens</Button>
+</RLink>
 </Flex>
 
 

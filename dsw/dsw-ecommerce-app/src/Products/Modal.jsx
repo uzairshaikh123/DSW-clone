@@ -12,13 +12,22 @@ import {
     GridItem,
     Heading,
   } from '@chakra-ui/react'
+  import { useNavigate } from "react-router-dom";
+
 import { useState } from 'react'
+import Cart from '../CartPage.jsx/Cart';
   
 
 
 function Modalfun({name,img,desc,price}) {
+  const navigate = useNavigate();
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [count,setcount] = useState(1)
+    const handleAdd=()=>{
+      
+
+
+    }
   
     return (
       <>
@@ -49,7 +58,7 @@ function Modalfun({name,img,desc,price}) {
               <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Cancel
               </Button>
-              <Button variant='outline'>Add to Cart</Button>
+              <Button variant='outline' onClick={handleAdd}>Add to Cart</Button>
               
             </ModalFooter>
           </ModalContent>

@@ -9,256 +9,272 @@ import {
     AccordionPanel,
     AccordionIcon,
   } from '@chakra-ui/react'
-  import {
-    RangeSlider,
-    RangeSliderTrack,
-    RangeSliderFilledTrack,
-    RangeSliderThumb,
-  } from '@chakra-ui/react'
+
 import Modalfun from './Modal';
 import {Link as RLink} from 'react-router-dom'
+import PriceRanger from './Priceranger';
+import Loading from '../Components/Pages/Loading';
+
+import Pagination from './Pagination';
+import { useContext } from 'react';
+import { AuthContext } from '../AuthContext/Data';
 function Products() {
-    let arr = [
-        {
-            id: 1,
-            name: "adidas",
-            img: "https://images.dsw.com/is/image/DSWShoes/530395_100_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            price: 109.99,
-            desc: "Alphabounce 1 Running Shoe - Men's"
-        },
-        {
-            id: 2,
-            name: "Puma",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/530447_100_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Ever FS Sneaker - Men's"
-        },
-        {
-            id: 3,
-            name: "adidas",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/530396_100_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Grand Court 2.0 Sneaker - Men's"
-        },
-        {
-            id: 4,
-            name: "adidas",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/530530_100_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Lite Racer Adapt 5.0 Sneaker - Men's"
-        },
-        {
-            id: 5,
-            name: "Crown Vintage",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/523902_240_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Edsul Sneaker"
-        },
-        {
-            id: 6,
-            name: "New Balance",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/501697_001_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Kaptir 2.0 Sneaker - Men's"
-        },
-        {
-            id: 7,
-            name: "adidas",
-            price: 109.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/505491_030_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Fresh Foam Roav Sneaker - Men's"
-        },
-        {
-            id: 8,
-            name: "Puma",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/531546_060_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Softride One4All Sneaker - Men's"
-        },
-        {
-            id: 9,
-            name: "Puma",
-            price: 109.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/520072_100_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Ever FS Sneaker"
-        },
-        {
-            id: 10,
-            name: "Crown Vintage",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/528805_060_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Ebben Sneaker"
-        },
-        {
-            id: 11,
-            name: "Vans",
-            price: 129.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/515160_400_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Runfalcon 2.0 Running Shoe - Men's"
-        },
-        {
-            id: 12,
-            name: "adidas",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/293308_001_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Asher Slip-On Sneaker - Men's"
-        },
-        {
-            id: 13,
-            name: "adidas",
-            price: 109.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/508630_026_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Ward Sneaker - Men's"
-        },
-        {
-            id: 14,
-            name: "adidas",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/524235_410_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Lite Racer BYD 2.0 Sneaker - Mens"
-        },
-        {
-            id: 15,
-            name: "Reebok",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/530825_001_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Hoops 3.0 Mid High-Top Sneaker - Men's"
-        },
-        {
-            id: 16,
-            name: "Vans",
-            price: 129.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/533207_102_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "237 Sneaker - Men's"
-        },
-        {
-            id: 17,
-            name: "ASICS",
-            price: 109.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/508055_037_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Fresh Foam 680 v7 Running Shoe - Men's"
-        },
-        {
-            id: 18,
-            name: "ASICS",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/530441_001_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Run '70s Running Shoe - Men's"
-        },
-        {
-            id: 19,
-            name: "Vans",
-            price: 129.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/512327_001_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "GEL-Venture 8 Running Shoe - Men's"
-        },
-        {
-            id: 20,
-            name: "ASICS",
-            price: 109.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/531790_060_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "515 Sneaker - Men's"
-        },
-        {
-            id: 21,
-            name: "Reebok",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/523614_061_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Kaptir 2.0 Running Shoe - Men's"
-        },
-        {
-            id: 22,
-            name: "Vans",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/474330_048_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "840 v5 Running Shoe - Men's"
-        },
-        {
-            id: 23,
-            name: "Brooks",
-            price: 129.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/520084_300_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "GT-1000 11 Running Shoe - Men's"
-        },
-        {
-            id: 24,
-            name: "Reebok",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/448007_001_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Rebound Rugged Sneaker - Men's"
-        },
-        {
-            id: 25,
-            name: "Reebok",
-            price: 129.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/449960_001_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Range High-Top Sneaker - Men's"
-        }, {
-            id: 26,
-            name: "ASICS",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/518607_001_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Pacer Future Street Plus Running Shoe - Men's"
-        },
-        {
-            id: 27,
-            name: "Brooks",
-            price: 109.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/516732_000_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Fresh Foam 680 v7 Running Shoe - Men's"
-        },
-        {
-            id: 28,
-            name: "Skechers",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/506302_774_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Fresh Foam Roav Running Shoe - Men's"
-        },
-        {
-            id: 29,
-            name: "Skechers",
-            price: 79.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/544445_600_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Daily 3.0 Sneaker - Men's"
-        },
-        {
-            id: 30,
-            name: "Brooks",
-            price: 109.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/505853_241_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Atwood Deluxe Sneaker - Men's"
-        },
-        {
-            id:31,
-            name:"",
-            price:100.99,
-            img:"https://images.dsw.com/is/image/DSWShoes/534700_360_ss_01?impolicy=qlt-medium&imwidth=800&imdensity=1",
-            desc: "Atwood Deluxe Sneaker - Men's"
+  const [state,setstate] = useState(true)
+  const [arr,setarr] = useState([])
+  useEffect(()=>{
 
-        },
-        {
-            id:32,
-            name:"",
-            price:100.99,
-            img:"https://images.dsw.com/is/image/DSWShoes/531252_701_ss_01?impolicy=qlt-medium&imwidth=800&imdensity=1",
-            desc: "Atwood Deluxe Sneaker - Men's"
+      setTimeout(() => {
+        setstate(false)
+      }, 800);
+      
+      },[])
+    // let arr = [
+    //     {
+    //         id: 1,
+    //         name: "adidas",
+    //         img:Adidas1,
+    //         price: 109.99,
+    //         desc: "Alphabounce 1 Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Puma",
+    //         price: 59.99,
+    //         img: Puma,
+    //         desc: "Ever FS Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "adidas",
+    //         price: 59.99,
+    //         img: Adidas2,
+    //         desc: "Grand Court 2.0 Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 4,
+    //         name: "adidas",
+    //         price: 79.99,
+    //         img:Adidas3,
+    //         desc: "Lite Racer Adapt 5.0 Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 5,
+    //         name: "Crown Vintage",
+    //         price: 79.99,
+    //         img: crown,
+    //         desc: "Edsul Sneaker"
+    //     },
+    //     {
+    //         id: 6,
+    //         name: "New Balance",
+    //         price: 79.99,
+    //         img: New_Balance,
+    //         desc: "Kaptir 2.0 Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 7,
+    //         name: "adidas",
+    //         price: 109.99,
+    //         img:Adidas4,
+    //         desc: "Fresh Foam Roav Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 8,
+    //         name: "Puma",
+    //         price: 59.99,
+    //         img: Puma2,
+    //         desc: "Softride One4All Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 9,
+    //         name: "Puma",
+    //         price: 109.99,
+    //         img: Puma3,
+    //         desc: "Ever FS Sneaker"
+    //     },
+    //     {
+    //         id: 10,
+    //         name: "Crown Vintage",
+    //         price: 79.99,
+    //         img: crown2,
+    //         desc: "Ebben Sneaker"
+    //     },
+    //     {
+    //         id: 11,
+    //         name: "Vans",
+    //         price: 129.99,
+    //         img: Vans5,
+    //         desc: "Runfalcon 2.0 Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 12,
+    //         name: "adidas",
+    //         price: 59.99,
+    //         img:Adidas5,
+    //         desc: "Asher Slip-On Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 13,
+    //         name: "Puma",
+    //         price: 109.99,
+    //         img: Puma4,
+    //         desc: "Ward Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 14,
+    //         name: "Vans",
+    //         price: 79.99,
+    //         img: Vans7,
+    //         desc: "Lite Racer BYD 2.0 Sneaker - Mens"
+    //     },
+    //     {
+    //         id: 15,
+    //         name: "Reebok",
+    //         price: 59.99,
+    //         img:Reebok2,
+    //         desc: "Hoops 3.0 Mid High-Top Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 16,
+    //         name: "Vans",
+    //         price: 129.99,
+    //         img: Vans8,
+    //         desc: "237 Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 17,
+    //         name: "ASICS",
+    //         price: 109.99,
+    //         img: ASICS,
+    //         desc: "Fresh Foam 680 v7 Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 18,
+    //         name: "ASICS",
+    //         price: 59.99,
+    //         img:ASICS2,
+    //         desc: "Run '70s Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 19,
+    //         name: "Vans",
+    //         price: 129.99,
+    //         img: Vans5,
+    //         desc: "GEL-Venture 8 Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 20,
+    //         name: "ASICS",
+    //         price: 109.99,
+    //         img: ASICS3,
+    //         desc: "515 Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 21,
+    //         name: "Reebok",
+    //         price: 79.99,
+    //         img: Reebok4,
+    //         desc: "Kaptir 2.0 Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 22,
+    //         name: "Vans",
+    //         price: 79.99,
+    //         img: Vans7,
+    //         desc: "840 v5 Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 23,
+    //         name: "Brooks",
+    //         price: 129.99,
+    //         img: Brooks3,
+    //         desc: "GT-1000 11 Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 24,
+    //         name: "Reebok",
+    //         price: 79.99,
+    //         img:Reebok5,
+    //         desc: "Rebound Rugged Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 25,
+    //         name: "Reebok",
+    //         price: 129.99,
+    //         img: Reebok3,
+    //         desc: "Range High-Top Sneaker - Men's"
+    //     }, {
+    //         id: 26,
+    //         name: "ASICS",
+    //         price: 59.99,
+    //         img: ASICS2,
+    //         desc: "Pacer Future Street Plus Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 27,
+    //         name: "Brooks",
+    //         price: 109.99,
+    //         img: Brooks2,
+    //         desc: "Fresh Foam 680 v7 Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 28,
+    //         name: "Skechers",
+    //         price: 79.99,
+    //         img: New_Balance3,
+    //         desc: "Fresh Foam Roav Running Shoe - Men's"
+    //     },
+    //     {
+    //         id: 29,
+    //         name: "Skechers",
+    //         price: 79.99,
+    //         img: Skechers,
+    //         desc: "Daily 3.0 Sneaker - Men's"
+    //     },
+    //     {
+    //         id: 30,
+    //         name: "Skechers",
+    //         price: 109.99,
+    //         img: Skechers2,
+    //         desc: "Atwood Deluxe Sneaker - Men's"
+    //     },
+    //     {
+    //         id:31,
+    //         name:"Puma",
+    //         price:100.99,
+    //         img:Puma3,
+    //         desc: "Atwood Deluxe Sneaker - Men's"
 
-        }
-    ]
+    //     },
+    //     {
+    //         id:32,
+    //         name:"Skechers",
+    //         price:100.99,
+    //         img:Skechers5,
+    //         desc: "Atwood Deluxe Sneaker - Men's"
+
+    //     }
+    // ]
+
+const Authobj = useContext(AuthContext)
+
 const [data,setdata] = useState([])
 let butt = Array(31).fill(0).map((e,i)=>i+1)
-let min=10
-let max=100
+let data2 = Authobj
 // console.log(butt)
     useEffect(() => {
-     setdata([...arr])
+     setdata([...Authobj])
 
-
+     
     }, [])
+    
+    useEffect(()=>{
+      setdata([...Authobj])
 
-
+    },[])
+    console.log(arr,Authobj)
 const handlesort=(val)=>{
-let ndata = data
+let ndata = Authobj
     if(val=="asc"){
        ndata.sort((a,b)=>{
             return a.price-b.price
@@ -276,13 +292,64 @@ let ndata = data
   
 
 }
-console.log(arr)
-    return (<div>
+
+
+const handleclick=(e)=>{
+
+ let val=e.target.innerText
+ let ndata = Authobj
+ ndata=ndata.filter((item)=>{
+  return item.size==val
+ })
+setdata([...ndata])
+}
+
+const handleall=()=>{
+  setdata([...Authobj])
+}
+
+const handlecolor=(e)=>{
+
+  let val=e.target.name
+  let ndata
+  if(e.target.checked){
+    ndata = Authobj
+    ndata=ndata.filter((item)=>{
+     return item.color==val
+    })
+  }else{
+    ndata = Authobj
+  }
+
+  // console.log(ndata)
+  setdata([...ndata])
+ }
+ const handlename=(e)=>{
+
+  let val=e.target.name
+  let ndata
+  if(e.target.checked){
+    ndata = Authobj
+    ndata=ndata.filter((item)=>{
+     return item.name==val
+    })
+  }else{
+    ndata = Authobj
+  }
+
+  // console.log(ndata)
+  setdata([...ndata])
+ }
+// console.log(data)
+    return (state?<Loading/> :
+    <>
+     <div>
    
 
         <Heading textAlign={'center'
         }>
             Products Page
+            {<Pagination />}
         </Heading>
         <div className='cont-product'>
 
@@ -300,10 +367,10 @@ console.log(arr)
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-{butt.map((item)=>{
-    return <Button mt={"10px"} variant='outline' mr={"5px"}> {item}</Button>
+{butt.map((item,i)=>{
+    return <Button key={i} mt={"10px"} variant='outline' mr={"5px"} onClick={handleclick}> {data2[i].size} </Button>
 })}
-     
+     <Button onClick={handleall}>View All</Button>
     
     </AccordionPanel>
   </AccordionItem>
@@ -319,41 +386,38 @@ console.log(arr)
       
     </h2>
     <AccordionPanel pb={4}>
-    <Checkbox colorScheme='gray'lineHeight={"15px"} fontSize={"20px"}>
+    <Checkbox name="adidas" colorScheme='gray'lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlename(e)} >
     Addidas
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name="Reebok" colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlename(e)}>
    Reebock
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name="New Balance" colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlename(e)}>
     New Balance
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name="Crown Vintage" colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlename(e)}>
   Crown Vintage
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name="Puma" colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlename(e)}>
     Puma
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name="Vans" colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlename(e)}>
     Vans
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name="ASICS" colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlename(e)}>
   ASICS
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name="Skechers" colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlename(e)}>
   Skechers
   </Checkbox>
-  <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
-  ASICS
-  </Checkbox>
+  
 
 
   
@@ -371,20 +435,20 @@ console.log(arr)
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-    <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+    <Checkbox name='black' colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlecolor(e)}>
     Black
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name='white' colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlecolor(e)}>
  White
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
+  <Checkbox name='yellow' colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlecolor(e)}>
   Yellow
   </Checkbox>
   <br />
-  <Checkbox colorScheme='gray' lineHeight={"15px"} fontSize={"20px"}>
-Brown
+  <Checkbox name='blue' colorScheme='gray' lineHeight={"15px"} fontSize={"20px"} onChange={(e)=>handlecolor(e)}>
+Blue
   </Checkbox>
   <Button mt={"30px"}>View All</Button>
      
@@ -554,18 +618,6 @@ Trail (5)
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-    <RangeSlider aria-label={[min, max]} defaultValue={[min, max]}>
-  <RangeSliderTrack bg='red.100'>
-    <RangeSliderFilledTrack bg='tomato' />
-  </RangeSliderTrack>
-  <RangeSliderThumb boxSize={6} index={0}>
-    <Box color='red'  />
-  </RangeSliderThumb>
-  <RangeSliderThumb boxSize={6} index={1}>
-    <Box color='red' />
-  </RangeSliderThumb>
-</RangeSlider>
-        
      
     </AccordionPanel>
   </AccordionItem>
@@ -603,6 +655,7 @@ Trail (5)
                             <Heading fontSize={"20px"}>{item.name}</Heading>
                             <p>{item.desc}</p>
                             <p>{"$"}{item.price}</p>
+                            <p>Size : {item.size}</p>
                       <img width={"90px"} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRauOGLtNzVAWhLL34f14v15aXnVwFTVJM-qw&usqp=CAU" alt="" />
                       </RLink>
                             <button className='add' variant='outline'><Modalfun name={item.name} img={item.img} desc={item.desc} price={item.price}/></button>
@@ -619,6 +672,8 @@ Trail (5)
   
    
     </div>
+    
+    </>
     )
 }
 

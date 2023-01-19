@@ -78,10 +78,10 @@ export default function Navbar() {
                 <NavLink key={link}>{link}</NavLink>
               ))} */}
             
-              <Flex width="450px" border="2px solid gray"  alignItems={'center'} flexDirection={"row"} justifyContent={'space-around'}>
+              <Flex width="450px" h={"55px"} border="2px solid gray"  alignItems={'center'} flexDirection={"row"} justifyContent={'space-around'}>
 
               <Text>Search DSW</Text> 
-              <Input type="text" width="350px" placeholder= 'search styles,brands and more' border={"none"}/>
+              <Input type="text"  variant='flushed'  width="350px" placeholder= 'search styles,brands and more' border={"none"}/>
               
               
               </Flex>
@@ -108,11 +108,15 @@ export default function Navbar() {
               <FaMapMarkerAlt />  Find a store</Text>
               </RLink>
             {/* <FontAwesomeIcon icon="fa-solid fa-cart-shopping" /> */}
-           <RLink to="/cart"> Bag
-          <Text>
-           <FaCartPlus />
+           <RLink to="/cart"> 
+          <span>
+          <FaCartPlus/>
            
-              </Text>
+              </span>
+          <span>
+           Bag
+           
+              </span>
 
            </RLink>
               </Flex>
@@ -136,7 +140,10 @@ export default function Navbar() {
               </MenuButton>
               <MenuList>
                 <MenuItem>Username</MenuItem>
-                <MenuItem>Profile</MenuItem>
+                <MenuItem>Email</MenuItem>
+               <RLink to="/adminlogin" > <MenuItem>Admin Login</MenuItem></RLink>
+               <RLink to="/adminregister" > <MenuItem>Admin Register</MenuItem></RLink>
+                
                 <MenuDivider />
                 <MenuItem>Logout</MenuItem>
               </MenuList>
