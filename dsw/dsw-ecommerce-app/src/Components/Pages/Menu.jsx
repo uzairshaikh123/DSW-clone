@@ -10,6 +10,7 @@ import {
     MenuDivider,
     Button,Box, Flex,Text
   } from '@chakra-ui/react'
+  import {Link as RLink} from 'react-router-dom'
 
 function  Menubar(){
 
@@ -19,16 +20,29 @@ function  Menubar(){
     <Flex width="80%"margin={"auto"} justifyContent={"space-around"}>
 
     
-<Menu>
+<Menu style={ {border:"2px solid red"}}>
   <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
     Women
   </MenuButton>
   <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-    <MenuItem>Mark as Draft</MenuItem>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Attend a Workshop</MenuItem>
+    <RLink to="/products">
+
+    </RLink>
+    <MenuItem>Shoes</MenuItem>
+    <RLink to="/products">
+
+    <MenuItem>Sandals</MenuItem>
+</RLink>
+<RLink to="/products">
+
+    <MenuItem>Sandals</MenuItem>
+</RLink><RLink to="/products">
+
+<MenuItem>Specific footwear</MenuItem>
+</RLink><RLink to="/products">
+
+<MenuItem>Traditional footwear</MenuItem>
+</RLink>
   </MenuList>
 </Menu>
 <Menu>
@@ -36,11 +50,32 @@ function  Menubar(){
     Mens
   </MenuButton>
   <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-    <MenuItem>Mark as Draft</MenuItem>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Attend a Workshop</MenuItem>
+  <RLink to="/products">
+
+ 
+    <MenuItem>Sneakers</MenuItem>
+    </RLink>
+    <RLink to="/products">
+
+ 
+    <MenuItem>Brogues</MenuItem>
+    </RLink>
+    <RLink to="/products">
+
+ 
+    <MenuItem>Chelsea boots</MenuItem>
+    </RLink>
+    <RLink to="/products">
+
+ 
+    <MenuItem>Espadrilles</MenuItem>
+    </RLink>
+    <RLink to="/products">
+
+ 
+    <MenuItem>Loafers</MenuItem>
+    </RLink>
+    
   </MenuList>
 </Menu>
 <Menu>
@@ -48,11 +83,11 @@ function  Menubar(){
     Kids
   </MenuButton>
   <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-    <MenuItem>Mark as Draft</MenuItem>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Attend a Workshop</MenuItem>
+    <MenuItem>Athletic Shoes</MenuItem>
+    <MenuItem>School Shoes</MenuItem>
+    <MenuItem>Slip On Shoe</MenuItem>
+    <MenuItem>Pre-Walking Shoe</MenuItem>
+    <MenuItem>Toddler Shoe</MenuItem>
   </MenuList>
 </Menu>
 <Menu>
@@ -60,11 +95,11 @@ function  Menubar(){
     Accessories & clothing
   </MenuButton>
   <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-    <MenuItem>Mark as Draft</MenuItem>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Attend a Workshop</MenuItem>
+    <MenuItem>Hats & caps for men</MenuItem>
+    <MenuItem>Necklace Designs For Women</MenuItem>
+    <MenuItem>Bracelets for men</MenuItem>
+    <MenuItem>Cufflinks</MenuItem>
+    <MenuItem>Scarves & mufflers for guys</MenuItem>
   </MenuList>
 </Menu>
 <Menu>
@@ -72,11 +107,11 @@ function  Menubar(){
     Atheletic & Sneakers
   </MenuButton>
   <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-    <MenuItem>Mark as Draft</MenuItem>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Attend a Workshop</MenuItem>
+    <MenuItem>Jogging</MenuItem>
+    <MenuItem>Racquetball</MenuItem>
+    <MenuItem>Aerobic dancing</MenuItem>
+    <MenuItem>Recreational </MenuItem>
+    <MenuItem>Exercising</MenuItem>
   </MenuList>
 </Menu>
 <Menu>
@@ -84,11 +119,11 @@ function  Menubar(){
    Brands
   </MenuButton>
   <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-    <MenuItem>Mark as Draft</MenuItem>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Attend a Workshop</MenuItem>
+    <MenuItem>Reebok</MenuItem>
+    <MenuItem>Adidas a Copy</MenuItem>
+    <MenuItem>Puma</MenuItem>
+    <MenuItem>ASICS</MenuItem>
+    <MenuItem>New Balance</MenuItem>
   </MenuList>
 </Menu>
 <Menu>
@@ -96,11 +131,11 @@ function  Menubar(){
     Clearence
   </MenuButton>
   <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-    <MenuItem>Mark as Draft</MenuItem>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Attend a Workshop</MenuItem>
+    <MenuItem>Clearence</MenuItem>
+    <MenuItem>New Balance</MenuItem>
+    <MenuItem>Puma</MenuItem>
+    <MenuItem>ASICS</MenuItem>
+    <MenuItem>New Balance</MenuItem>
   </MenuList>
 </Menu>
 <Menu>
@@ -108,11 +143,11 @@ function  Menubar(){
     Atheletic & Sneakers
   </MenuButton>
   <MenuList>
-    <MenuItem>Download</MenuItem>
-    <MenuItem>Create a Copy</MenuItem>
-    <MenuItem>Mark as Draft</MenuItem>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Attend a Workshop</MenuItem>
+  <MenuItem>Jogging</MenuItem>
+    <MenuItem>Racquetball</MenuItem>
+    <MenuItem>Aerobic dancing</MenuItem>
+    <MenuItem>Recreational </MenuItem>
+    <MenuItem>Exercising</MenuItem>
   </MenuList>
 </Menu>
 <Button>Deals</Button>

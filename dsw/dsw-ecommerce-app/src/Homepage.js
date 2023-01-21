@@ -20,7 +20,7 @@ function Homepage() {
  useEffect(()=>{
     setTimeout(()=>{
 setprogress(true)
-    },3000)
+    },2000)
  },[])
 
 

@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AdminPage from "./Admin/AdminPage";
+import { AuthContext } from "./AuthContext/Data";
+import Error from "./Authentication/Error";
 import AllRoutes from "./Components/AllRoutes/AllRoutes";
 import Progressfun from "./Components/Pages/Progress";
 import Homepage from "./Homepage";
@@ -10,15 +13,22 @@ import Products from "./Products/Products";
 
 function App() {
  const [progressbar,setprogressbar] = useState(true)
+let Authobj = useContext(AuthContext)
 
+let {admin} = Authobj
   useEffect(()=>{
     setTimeout(()=>{
       setprogressbar(false)
     },200)
  },[])
  
-  return progressbar?<Progressfun />:
-    <div>
+  return progressbar?<Progressfun />:admin?
+  <div>
+
+    <AdminPage />
+  
+  </div>
+     : <div>
        
       <Navbar />
       <SmallCont />

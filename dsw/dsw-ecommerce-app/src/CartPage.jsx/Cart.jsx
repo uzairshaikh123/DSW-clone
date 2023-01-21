@@ -3,49 +3,67 @@ import React, { useEffect, useState } from 'react'
 import Address from './Address'
 import Loading from '../Components/Pages/Loading';
 import Progressfun from '../Components/Pages/Progress';
+import { DeleteIcon } from '@chakra-ui/icons';
+
 
 function Cart() {
   const [state,setstate] = useState(true)
+  const [totalcost,settotalcost] = useState(0)
+  const [data,setdata] = useState([])
+  let arr = JSON.parse(localStorage.getItem("cartarr")) || []
+
 
     useEffect(()=>{
 
         setTimeout(() => {
           setstate(false)
         }, 1000);
-        
-        },[])
-    let arr=[
-        {
-            id: 1,
-            name: "adidas",
-            img: "https://images.dsw.com/is/image/DSWShoes/530395_100_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            price: 109.99,
-            desc: "Alphabounce 1 Running Shoe - Men's"
-        },
-        {
-            id: 2,
-            name: "Puma",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/530447_100_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Ever FS Sneaker - Men's"
-        },
-        {
-            id: 3,
-            name: "adidas",
-            price: 59.99,
-            img: "https://images.dsw.com/is/image/DSWShoes/530396_100_ss_01?impolicy=colpg&imwidth=400&imdensity=1",
-            desc: "Grand Court 2.0 Sneaker - Men's"
-        }
-    ]
+
+let total =arr.reduce((acc,item)=>{
+
+acc= acc+item.price*item.quantity
+return acc
+},0)
+console.log(total)
+setdata([...arr])
+settotalcost(total)
+localStorage.setItem("total",JSON.stringify(total))
+
+   },[totalcost])
+
+const handledelete=(id)=>{
+  
+let newdata = arr.filter((item)=>{
+  return item.id!==id
+})
+ 
+localStorage.setItem("cartarr",JSON.stringify(newdata))
+setdata([...newdata])
+let ndata = JSON.parse(localStorage.getItem("cartarr"))
+let total = ndata.reduce((acc,item)=>{
+
+    acc = acc+item.price
+    return acc
+    },0)
+settotalcost(total)
+localStorage.setItem("total",JSON.stringify(total))
+
+
+}
+
+
+
+
+
   return state?<Loading />
   :
-    <>
+    arr.length==0?<Heading textAlign={"center"} mt={"30px"} color={"red"}>Cart Is Empty</Heading>:<>
 <Heading textAlign={'center'}>Cart Page</Heading>
-<Heading ml={3}>Total Cost : $309 USD</Heading>
+<Heading ml={3}>Total Cost : ${totalcost} USD</Heading>
     <div className='cart'>
 
 <div className='left' style={{border:"0.5px solid gray",width:"50%"}}>
-{arr.map((item)=>{
+{data.map((item)=>{
    return  <>
     <div className='parent-div' style={{display:"flex",width:"95%",margin:"auto",textAlign:"left",padding:"25px",color:"black",justifyContent:"space-between"}}>
 
@@ -66,9 +84,11 @@ function Cart() {
 </div>
 
 <div id='left-div-rigth-cont' style={{marginTop:"50px"}}>
-    <div>
-    <Heading as='h4' size='md'>Price : {"$"}{item.price} {" USD"}</Heading>
-    <Heading as='h4' size='md'>Quantity : 7</Heading>
+    <div style={{lineHeight: '30px'}}>
+    <Heading as='h4' size='md'  style={{lineHeight: '40px'}}>Price : {"$"}{item.price} {" USD"}</Heading>
+    <Heading as='h4' size='md'  style={{lineHeight: '40px'}}>Quantity : {item.quantity}</Heading>
+    <Heading color={"red"} size={"md"} style={{cursor:"pointer",lineHeight: '40px'}} onClick={()=>handledelete(item.id)}>Remove<DeleteIcon /></Heading>
+   
     </div>
  
  

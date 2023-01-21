@@ -18,6 +18,7 @@ import Loading from '../Components/Pages/Loading';
 import Pagination from './Pagination';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthContext/Data';
+import Priceranger from './Priceranger';
 function Products() {
   const [state,setstate] = useState(true)
   const [arr,setarr] = useState([])
@@ -260,21 +261,21 @@ const Authobj = useContext(AuthContext)
 
 const [data,setdata] = useState([])
 let butt = Array(31).fill(0).map((e,i)=>i+1)
-let data2 = Authobj
+let data2 = Authobj.data
 // console.log(butt)
     useEffect(() => {
-     setdata([...Authobj])
+     setdata([...Authobj.data])
 
      
     }, [])
     
     useEffect(()=>{
-      setdata([...Authobj])
+      setdata([...Authobj.data])
 
     },[])
-    console.log(arr,Authobj)
+    console.log(arr,Authobj.data)
 const handlesort=(val)=>{
-let ndata = Authobj
+let ndata = Authobj.data
     if(val=="asc"){
        ndata.sort((a,b)=>{
             return a.price-b.price
@@ -297,7 +298,7 @@ let ndata = Authobj
 const handleclick=(e)=>{
 
  let val=e.target.innerText
- let ndata = Authobj
+ let ndata = Authobj.data
  ndata=ndata.filter((item)=>{
   return item.size==val
  })
@@ -305,7 +306,7 @@ setdata([...ndata])
 }
 
 const handleall=()=>{
-  setdata([...Authobj])
+  setdata([...Authobj.data])
 }
 
 const handlecolor=(e)=>{
@@ -313,12 +314,12 @@ const handlecolor=(e)=>{
   let val=e.target.name
   let ndata
   if(e.target.checked){
-    ndata = Authobj
+    ndata = Authobj.data
     ndata=ndata.filter((item)=>{
      return item.color==val
     })
   }else{
-    ndata = Authobj
+    ndata = Authobj.data
   }
 
   // console.log(ndata)
@@ -329,12 +330,12 @@ const handlecolor=(e)=>{
   let val=e.target.name
   let ndata
   if(e.target.checked){
-    ndata = Authobj
+    ndata = Authobj.data
     ndata=ndata.filter((item)=>{
      return item.name==val
     })
   }else{
-    ndata = Authobj
+    ndata = Authobj.data
   }
 
   // console.log(ndata)
@@ -618,7 +619,7 @@ Trail (5)
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-     
+     <Priceranger />
     </AccordionPanel>
   </AccordionItem>
   <AccordionItem>
@@ -646,8 +647,8 @@ Trail (5)
             </div>
             <div className='productdiv2'>
                 <Grid templateColumns='repeat(4, 1fr)' gap={6}>
-                    {data.map((item) => {
-                        return <GridItem w='100%' key={item.id} className="prod">
+                    {data.map((item,i) => {
+                        return  i<20 && <GridItem w='100%' key={item.id} className="prod">
                             <RLink to={`/products/${item.id}`} >
 
                             
@@ -658,7 +659,7 @@ Trail (5)
                             <p>Size : {item.size}</p>
                       <img width={"90px"} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRauOGLtNzVAWhLL34f14v15aXnVwFTVJM-qw&usqp=CAU" alt="" />
                       </RLink>
-                            <button className='add' variant='outline'><Modalfun name={item.name} img={item.img} desc={item.desc} price={item.price}/></button>
+                            <button className='add' variant='outline'><Modalfun key={item.id} id={item.id} name={item.name} img={item.img} desc={item.desc} price={item.price}/></button>
                             
                         </GridItem>
 
