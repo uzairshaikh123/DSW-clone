@@ -1,13 +1,16 @@
 import { Heading, Input, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import { Form } from 'react-router-dom'
+import { useContext } from 'react'
+import { Form, Navigate } from 'react-router-dom'
+import { AuthContext } from '../AuthContext/Data'
 import Footer from '../Components/Pages/Footer'
 import Loading from '../Components/Pages/Loading'
 import Formfun from './Form'
 
 function Signin() {
   const [state,setstate] = useState(true)
-
+  let Authobj = useContext(AuthContext)
+let {user} = Authobj
     useEffect(()=>{
 
         setTimeout(() => {
@@ -15,6 +18,13 @@ function Signin() {
         }, 1000);
         
         },[])
+
+
+if(user){
+  return <Navigate to="/" />
+}
+
+
   return (
     state?<Loading />
     :<>

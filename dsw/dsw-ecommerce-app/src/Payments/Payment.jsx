@@ -8,9 +8,15 @@ import {
   } from '@chakra-ui/react'
 import Date from './Date'
 import Loading from '../Components/Pages/Loading'
+import { useRef } from 'react'
+import Otpfun from './Otp'
 function Payment() {
   const [state,setstate] = useState(true)
-
+  const dref = useRef({})
+let data = JSON.parse(localStorage.getItem("summary"))
+let total = JSON.parse(localStorage.getItem("total"))
+const [otp,setotp] = useState(false)
+console.log(data)
     useEffect(()=>{
 
         setTimeout(() => {
@@ -18,6 +24,25 @@ function Payment() {
         }, 1000);
         
         },[])
+
+const handleclick=(e)=>{
+  e.preventDefault()
+let card = (dref.current['card'].value)
+let cvv =(dref.current['cvv'].value)
+
+if(card==""|| cvv==""){
+  alert("Please fill all the details")
+}else{
+  alert("OTP : 1234")
+  setotp(true)
+  
+}
+
+
+}
+
+
+
   return ( state?<Loading />
   :<>
   <Heading textAlign={'center'}>Payments Page</Heading>
@@ -26,44 +51,51 @@ function Payment() {
 
        <Heading size='lg'>Summary</Heading> 
   <hr />
-       <Heading as='h4' size='md' lineHeight={"70px"}>
-    Email :
+  <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+    Name : {data.name}
   </Heading>
-  <Heading as='h4' size='md' lineHeight={"70px"}>
-   Address :
+  <hr />
+       <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+    Email : {data.email}
+    
   </Heading>
-  <Heading as='h4' size='md' lineHeight={"70px"}>
-  Contact No :
+  <hr />
+  <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+   Address :{data.houseno}{" ,"}{data.city}{" ,"}{data.district}
   </Heading>
-  <Heading as='h4' size='md' lineHeight={"70px"}>
-   Quantity :
+  <hr />
+  <Heading as='h3' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+  Contact No :{data.contact}
   </Heading>
-  <Heading as='h4' size='md' lineHeight={"70px"}>
-    Total Price:
+  <hr />
+  <Heading as='h3' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+    Total Price : ${total}{" "} USD
   </Heading>
     </div>
     <div id='card-details'>
      Enter Card details
      <hr />
-     <form action="">
+     <form action="" style={{marginTop:"30px"}}>
      <FormControl isRequired>
   <FormLabel>First name</FormLabel>
   <Input placeholder='First name' />
   <FormLabel>Card Number</FormLabel>
-  <Input placeholder='Enter Your Card Number' type={"number"}/>
+  <Input placeholder='Enter Your Card Number' ref={e=>dref.current['card']=e} type={"number"}/>
  
 {<Date />}
   <FormLabel>CVV</FormLabel>
-  <Input placeholder='Enter Your CVV' type={"number"}/>
+  <Input placeholder='Enter Your CVV' type={"number"} ref={e=>dref.current['cvv']=e}/>
 </FormControl>
-<button type="submit" className='payment-sub'>
+<button type="submit" className='payment-sub' onClick={handleclick}>
     Submit
 </button>
+
      </form>
-    
+    {otp && <Otpfun />}
     </div>
-        
     </div>
+      
+
     </>
   )
 }

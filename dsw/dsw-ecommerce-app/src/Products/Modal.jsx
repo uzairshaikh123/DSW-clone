@@ -12,19 +12,46 @@ import {
     GridItem,
     Heading,
   } from '@chakra-ui/react'
-  import { useNavigate } from "react-router-dom";
+  import { json, useNavigate } from "react-router-dom";
 
 import { useState } from 'react'
 import Cart from '../CartPage.jsx/Cart';
+import Item from 'antd/es/list/Item';
   
 
-
-function Modalfun({name,img,desc,price}) {
+let arr = JSON.parse(localStorage.getItem("cartarr")) || []
+function Modalfun({id,name,img,desc,price}) {
   const navigate = useNavigate();
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [count,setcount] = useState(1)
-    const handleAdd=()=>{
+    const handleAdd=(id)=>{
+      let quantity = count
+     
+      let obj ={
+        id,
+        quantity,
+        price:price,
+        img:img,
+        desc:desc,
+        name:name
+      }
       
+      
+      let ndata = JSON.parse(localStorage.getItem("cartarr")) || []
+    
+
+if(ndata.length>1){
+  let newdata = ndata.filter((item)=>{
+    return item.id!==id
+  })
+    
+      localStorage.setItem("cartarr",JSON.stringify([...newdata,obj]))
+
+}else{
+  arr.push(obj)
+  localStorage.setItem("cartarr",JSON.stringify(arr))
+}
+
 
 
     }
@@ -58,7 +85,13 @@ function Modalfun({name,img,desc,price}) {
               <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Cancel
               </Button>
-              <Button variant='outline' onClick={handleAdd}>Add to Cart</Button>
+              <Button variant='outline' onClick={()=>{
+                
+                
+                handleAdd(id)
+                onClose()
+                
+                }}>Add to Cart</Button>
               
             </ModalFooter>
           </ModalContent>

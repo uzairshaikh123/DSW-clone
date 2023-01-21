@@ -28,6 +28,8 @@ import hello from '../img/hello';
 //HiOutlineUserCircle
 import logo from '../img/logo.png'
  import { FaUser,FaMapMarkerAlt,FaCartPlus } from "react-icons/fa";
+import { AuthContext } from '../AuthContext/Data';
+import { useContext } from 'react';
 //  import {FontAwesomeIcon} from '@fortawesome/free-solid-svg-icons'
 //  import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
 // import { faCircle } from '@fortawesome/free-regular-svg-icons'
@@ -51,6 +53,23 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const Authobj = useContext(AuthContext)
+  let {logoutuser,user,name,Adminpage} = Authobj
+const handlelogout=()=>{
+
+  logoutuser()
+  alert("You have logout")
+
+
+}
+
+const handleadmin=()=>{
+
+  Adminpage()
+
+
+}
+
 
   return (
     <>
@@ -133,19 +152,20 @@ export default function Navbar() {
                 <Avatar
                   size={'sm'}
                   src={
-                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                    'https://avatars.dicebear.com/api/male/username.svg'
                   } width="50px"
                   height="50pxpx"
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Username</MenuItem>
-                <MenuItem>Email</MenuItem>
-               <RLink to="/adminlogin" > <MenuItem>Admin Login</MenuItem></RLink>
-               <RLink to="/adminregister" > <MenuItem>Admin Register</MenuItem></RLink>
+                <MenuItem>{name.name==""?"Username":name.name}</MenuItem>
+                <MenuItem>{name.email==""?"Email":name.email}</MenuItem>
+               <RLink to="/admin" > <MenuItem onClick={handleadmin}>Admin</MenuItem></RLink>
+               
+               <RLink to="/trackorder" > <MenuItem>Track Your Order</MenuItem></RLink>
                 
                 <MenuDivider />
-                <MenuItem>Logout</MenuItem>
+                {user?<MenuItem onClick={handlelogout}>Logout</MenuItem>:""}
               </MenuList>
             </Menu>
           </Flex>
