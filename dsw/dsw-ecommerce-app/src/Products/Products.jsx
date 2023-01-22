@@ -349,8 +349,8 @@ const handlecolor=(e)=>{
 
         <Heading textAlign={'center'
         }>
-            Products Page
-            {<Pagination />}
+            DESIGNER SHOES 
+            <hr />
         </Heading>
         <div className='cont-product'>
 
@@ -648,7 +648,7 @@ Trail (5)
             <div className='productdiv2'>
                 <Grid templateColumns='repeat(4, 1fr)' gap={6}>
                     {data.map((item,i) => {
-                        return  i<20 && <GridItem w='100%' key={item.id} className="prod">
+                        return <GridItem w='100%' key={item.id} className="prod">
                             <RLink to={`/products/${item.id}`} >
 
                             

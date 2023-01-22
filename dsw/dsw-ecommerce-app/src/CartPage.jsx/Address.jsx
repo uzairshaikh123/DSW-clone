@@ -29,7 +29,7 @@ function Address() {
 let obj={
   name,last,email,city,district,houseno,contact
 }
-localStorage.setItem("summary",JSON.stringify(obj))
+sessionStorage.setItem("summary",JSON.stringify(obj))
 
     return navigate("/payments")
 

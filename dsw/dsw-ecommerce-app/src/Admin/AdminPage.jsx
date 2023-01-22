@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AllRoutes from '../Components/AllRoutes/AllRoutes'
+import Feedback from '../Feedback/Feedback'
 import Addproduct from './Addproduct'
 import Nav from './AdminNav'
 import Adminui from './Adminui'
 import Delproduct from './Delproduct'
+import TrackFeedback from './Feedbacktrack'
 import Trackorder from './Trackorder'
 // import Adidas1 from '../img/Adidas.webp';
 // import Adidas2 from '../img/Adidas2.webp';
@@ -350,6 +352,8 @@ function AdminPage() {
 <Route path='/addproduct' element={<Addproduct />}></Route>
 <Route path='/trackthehistory' element={<Trackorder />}></Route>
 <Route path='/delproduct' element={<Delproduct />}></Route>
+<Route path='/trackfeedback' element={<TrackFeedback />}></Route>
+
 </Routes>
  
   </div>

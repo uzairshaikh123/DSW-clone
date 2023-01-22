@@ -10,7 +10,7 @@ function Cart() {
   const [state,setstate] = useState(true)
   const [totalcost,settotalcost] = useState(0)
   const [data,setdata] = useState([])
-  let arr = JSON.parse(localStorage.getItem("cartarr")) || []
+  let arr = JSON.parse(sessionStorage.getItem("cartarr"))||[]
 
 
     useEffect(()=>{
@@ -19,7 +19,7 @@ function Cart() {
           setstate(false)
         }, 1000);
 
-let total =arr.reduce((acc,item)=>{
+let total =arr?.reduce((acc,item)=>{
 
 acc= acc+item.price*item.quantity
 return acc
@@ -27,7 +27,7 @@ return acc
 console.log(total)
 setdata([...arr])
 settotalcost(total)
-localStorage.setItem("total",JSON.stringify(total))
+sessionStorage.setItem("total",JSON.stringify(total))
 
    },[totalcost])
 
@@ -37,16 +37,16 @@ let newdata = arr.filter((item)=>{
   return item.id!==id
 })
  
-localStorage.setItem("cartarr",JSON.stringify(newdata))
+sessionStorage.setItem("cartarr",JSON.stringify(newdata))
 setdata([...newdata])
-let ndata = JSON.parse(localStorage.getItem("cartarr"))
+let ndata = JSON.parse(sessionStorage.getItem("cartarr"))
 let total = ndata.reduce((acc,item)=>{
 
     acc = acc+item.price
     return acc
     },0)
 settotalcost(total)
-localStorage.setItem("total",JSON.stringify(total))
+sessionStorage.setItem("total",JSON.stringify(total))
 
 
 }
@@ -58,7 +58,8 @@ localStorage.setItem("total",JSON.stringify(total))
   return state?<Loading />
   :
     arr.length==0?<Heading textAlign={"center"} mt={"30px"} color={"red"}>Cart Is Empty</Heading>:<>
-<Heading textAlign={'center'}>Cart Page</Heading>
+<Heading textAlign={'center'}>Cart</Heading>
+<hr />
 <Heading ml={3}>Total Cost : ${totalcost} USD</Heading>
     <div className='cart'>
 

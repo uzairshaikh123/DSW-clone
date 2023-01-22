@@ -16,10 +16,10 @@ import {
 
 import { useState } from 'react'
 import Cart from '../CartPage.jsx/Cart';
-import Item from 'antd/es/list/Item';
+
   
 
-let arr = JSON.parse(localStorage.getItem("cartarr")) || []
+
 function Modalfun({id,name,img,desc,price}) {
   const navigate = useNavigate();
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -37,7 +37,7 @@ function Modalfun({id,name,img,desc,price}) {
       }
       
       
-      let ndata = JSON.parse(localStorage.getItem("cartarr")) || []
+let ndata = JSON.parse(sessionStorage.getItem("cartarr")) || []
     
 
 if(ndata.length>1){
@@ -45,11 +45,11 @@ if(ndata.length>1){
     return item.id!==id
   })
     
-      localStorage.setItem("cartarr",JSON.stringify([...newdata,obj]))
+      sessionStorage.setItem("cartarr",JSON.stringify([...newdata,obj]))
 
 }else{
-  arr.push(obj)
-  localStorage.setItem("cartarr",JSON.stringify(arr))
+  ndata.push(obj)
+  sessionStorage.setItem("cartarr",JSON.stringify(ndata))
 }
 
 
