@@ -45,7 +45,26 @@ localStorage.setItem("Alldata",JSON.stringify(newdata))
 
 }
 
-
+const handlesort=(e)=>{
+ let val=(e.target.value)
+  let ndata = data
+      if(val=="asc"){
+         ndata.sort((a,b)=>{
+              return a.price-b.price
+          })
+          setdata([...ndata])
+      }else if(val=="desc"){
+        ndata.sort((a,b)=>{
+              return b.price-a.price
+          })
+         setdata([...ndata])
+      }
+      
+     console.log(ndata)
+      
+    
+  
+  }
 
 
 
@@ -62,8 +81,8 @@ localStorage.setItem("Alldata",JSON.stringify(newdata))
    </Heading>
 
    <Text>Sort By Price</Text>
-   <Select
-   mt={"50px"}
+   <Select  onChange={handlesort}
+  
    mb={"50px"}
    
   bg='black'
@@ -71,8 +90,8 @@ localStorage.setItem("Alldata",JSON.stringify(newdata))
   color='white'
   
 >
-<option value='option1' style={{color:"white",backgroundColor:"black"}}>Low To High</option>
-<option value='option1' style={{color:"white",backgroundColor:"black"}}>High To Low</option>
+<option value='asc' style={{color:"white",backgroundColor:"black"}}>Low To High</option>
+<option value='desc' style={{color:"white",backgroundColor:"black"}} onChange={()=>handlesort("desc")}>High To Low</option>
 
 </Select>
    <TableContainer>

@@ -13,8 +13,8 @@ import Otpfun from './Otp'
 function Payment() {
   const [state,setstate] = useState(true)
   const dref = useRef({})
-let data = JSON.parse(localStorage.getItem("summary"))
-let total = JSON.parse(localStorage.getItem("total"))
+let data = JSON.parse(sessionStorage.getItem("summary"))
+let total = JSON.parse(sessionStorage.getItem("total"))
 const [otp,setotp] = useState(false)
 console.log(data)
     useEffect(()=>{
@@ -45,11 +45,12 @@ if(card==""|| cvv==""){
 
   return ( state?<Loading />
   :<>
-  <Heading textAlign={'center'}>Payments Page</Heading>
+  <Heading textAlign={'center'}>Payments</Heading>
+  <hr />
  <div id='payment-cont'>
-    <div id='summary' style={{padding:"20px"}}>
+    <div id='summary' style={{padding:"20px",border:"1px solid gray"}}>
 
-       <Heading size='lg'>Summary</Heading> 
+       <Heading size='lg'>Summary 🛍️</Heading> 
   <hr />
   <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
     Name : {data.name}

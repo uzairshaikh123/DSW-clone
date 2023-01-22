@@ -16,17 +16,17 @@ function Maps() {
     <div style={{margin:"auto",width:"80%",marginTop:"50px"}}>
         <Heading>Find Our Stores</Heading>
         <hr />
-        <Heading as='h4' size='md' bgColor={"red"} style={{display:"inline-block",color:"white",marginTop:"30px"}}>
+        <Heading as='h4' size='md' bgColor={"red"} style={{display:"inline-block",color:"white",marginTop:"30px",padding:"8px"}}>
    RED : CURRENTLY OPEN
   </Heading>
   <br />
   <br />
-  <Heading as='h4' size='md' bgColor={"blue"} style={{display:"inline-block",color:"white"}}>
+  <Heading as='h4' size='md' bgColor={"blue"} style={{display:"inline-block",color:"white",padding:"8px"}}>
    BLUE : PARTIALLY OPEN
   </Heading>
   <br />
   <br />
-  <Heading as='h4' size='md' bgColor={"yellow"} style={{display:"inline-block",color:"black"}}>
+  <Heading as='h4' size='md' bgColor={"yellow"} style={{display:"inline-block",color:"black",padding:"8px"}}>
    YELLOW : COMING SOON
   </Heading>
 <img width={"90%"} src="https://foreignpolicy.com/wp-content/themes/foreign-policy-2017/assets/src/images/power-maps/5G/competitor-profiles-2020.gif" alt="" />

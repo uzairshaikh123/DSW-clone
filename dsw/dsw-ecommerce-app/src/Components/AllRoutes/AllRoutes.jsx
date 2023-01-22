@@ -8,6 +8,7 @@ import Delproduct from '../../Admin/Delproduct'
 import Register from '../../Authentication/Register'
 import Signin from '../../Authentication/Signin'
 import Cart from '../../CartPage.jsx/Cart'
+import Feedback from '../../Feedback/Feedback'
 import Homepage from '../../Homepage'
 import Maps from '../../Map/Maps'
 import PageNotFound from '../../PageNotFound/PageNotFound'
@@ -49,6 +50,7 @@ function AllRoutes() {
    </PrivateRoute>
 }></Route>
 <Route path='/addproduct' element={<Addproduct />}></Route>
+<Route path='/feedback' element={<Feedback />}></Route>
 <Route path='/trackthehistory' element={<Trackorder />}></Route>
 <Route path='/delproduct' element={<Delproduct />}></Route>
 <Route path='/products/:id' element={<SingleProduct />}></Route>

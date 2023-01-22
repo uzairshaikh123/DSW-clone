@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { Rate } from 'antd';
 import { Heading } from '@chakra-ui/react';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react'
 
 const desc = ['terrible  😡', 'bad  😔', 'normal  🙂', 'good  😊', 'wonderful  🤩'];
 
@@ -18,7 +29,7 @@ const [review,setreview] = useState(['terrible  😡', 'bad  😔', 'normal  �
 
   return (
     <>
-<div style={{width:"27%",height:"auto",margin:"auto"}}>
+<div style={{width:"30%",height:"auto",margin:"auto"}}>
 
 
    <span>
@@ -28,13 +39,32 @@ const [review,setreview] = useState(['terrible  😡', 'bad  😔', 'normal  �
     </span>
     <button onClick={handleclick} style={{backgroundColor:"black",width:"150px",color:"white",marginLeft:"50px",padding:"20px"}}>ADD REVIEW</button>
     <div>
-<div style={{width:"300px",height:"auto",margin:"auto"}}>
+<div style={{width:"100%",height:"auto",margin:"auto"}}>
   
 
-{review?.map((item)=>{
+        
+        <TableContainer>
+          <Table variant='striped' colorScheme='red'>
+            <TableCaption>Fashion & Feet</TableCaption>
+            <Thead>
+              <Tr>
+                <Th>Reviews</Th>
+               </Tr>
+            </Thead>
+            <Tbody>
+           
+                {review?.map((item)=>{
+        
+                return <Tr>
+                 <Th>{item}</Th> 
+                  </Tr>
+                })}
+            
+            </Tbody>
+        
+          </Table>
+        </TableContainer>
 
-return <Heading size={"md"} color="black">{item}</Heading>
-})}
 </div>
 
     </div>
@@ -44,3 +74,5 @@ return <Heading size={"md"} color="black">{item}</Heading>
 };
 
 export default Ratingsfun;
+
+

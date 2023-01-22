@@ -39,13 +39,14 @@ import { AuthContext } from '../AuthContext/Data';
     let ndata = data.filter((item)=>{
         return item.id==id
     })
+    // conso/le.log(ndata)
     setarr({...ndata[0]})
 
 
 
 
     },[])
-    console.log(arr)
+    // console.log(arr)
 
     return (
         <Box>
@@ -71,7 +72,7 @@ import { AuthContext } from '../AuthContext/Data';
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-               {data.name}
+               {arr.name}
               </Heading>
               <Text
                 color={useColorModeValue('gray.900', 'gray.400')}
@@ -200,7 +201,7 @@ import { AuthContext } from '../AuthContext/Data';
                 transform: 'translateY(2px)',
                 boxShadow: 'lg',
               }}>
-              <Modalfun key={data.id} id={data.id} name={data.name} img={data.img} desc={data.desc} price={data.price}/>
+              <Modalfun key={arr.id} id={arr.id} name={arr.name} img={arr.img} desc={arr.desc} price={arr.price}/>
             </Button>
   
             <Stack direction="row" alignItems="center" justifyContent={'center'}>

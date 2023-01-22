@@ -26,7 +26,6 @@ const dref = useRef({})
     e.preventDefault()
    
     let name= dref.current['name'].value
-    
     let id= dref.current['id'].value
     let img= dref.current['img'].value
     let color= dref.current['color'].value

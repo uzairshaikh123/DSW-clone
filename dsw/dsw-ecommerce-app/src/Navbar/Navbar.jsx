@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 import {Link as RLink} from 'react-router-dom'
 // import hello from '../../img/hello';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, ChatIcon } from '@chakra-ui/icons';
 import { PhoneIcon, AddIcon, WarningIcon,Search2Icon } from '@chakra-ui/icons'
 import 'font-awesome/css/font-awesome.min.css'
 // import { HiOutlineUserCircle } from 'react-icons/fa';
@@ -30,6 +30,7 @@ import logo from '../img/logo.png'
  import { FaUser,FaMapMarkerAlt,FaCartPlus } from "react-icons/fa";
 import { AuthContext } from '../AuthContext/Data';
 import { useContext } from 'react';
+import Appfun from './Search';
 //  import {FontAwesomeIcon} from '@fortawesome/free-solid-svg-icons'
 //  import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
 // import { faCircle } from '@fortawesome/free-regular-svg-icons'
@@ -100,8 +101,8 @@ const handleadmin=()=>{
               <Flex width="450px" h={"55px"} border="2px solid gray"  alignItems={'center'} flexDirection={"row"} justifyContent={'space-around'}>
 
               <Text>Search DSW</Text> 
-              <Input type="text"  variant='flushed'  width="350px" placeholder= 'search styles,brands and more' border={"none"}/>
-              
+              {/* <Input type="text"  variant='flushed'  width="350px" placeholder= 'search styles,brands and more' border={"none"}/> */}
+              {<Appfun />}
               
               </Flex>
               <Button>  
@@ -138,6 +139,19 @@ const handleadmin=()=>{
               </span>
 
            </RLink>
+           <RLink to="/feedback"> 
+           <Text>
+          <span>
+          <ChatIcon />
+          <br />
+           </span>
+
+          
+           Feedback
+           
+              </Text>
+              </RLink>
+
               </Flex>
           <Flex alignItems={'center'} justifyContent={"space-around"}>
             
@@ -160,9 +174,9 @@ const handleadmin=()=>{
               <MenuList>
                 <MenuItem>{name.name==""?"Username":name.name}</MenuItem>
                 <MenuItem>{name.email==""?"Email":name.email}</MenuItem>
-               <RLink to="/admin" > <MenuItem onClick={handleadmin}>Admin</MenuItem></RLink>
+               <RLink to="/admin" > <MenuItem onClick={handleadmin}>{name.name?"Admin":null}</MenuItem></RLink>
                
-               <RLink to="/trackorder" > <MenuItem>Track Your Order</MenuItem></RLink>
+               <RLink to="/trackorder" > <MenuItem>{name.name?"Track Your Order":null}</MenuItem></RLink>
                 
                 <MenuDivider />
                 {user?<MenuItem onClick={handlelogout}>Logout</MenuItem>:""}

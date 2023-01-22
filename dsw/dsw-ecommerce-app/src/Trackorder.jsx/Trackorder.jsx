@@ -2,15 +2,16 @@ import React from 'react';
 import { Button, Divider, Steps } from 'antd';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import {Link as RLink} from 'react-router-dom'
+import {Link as RLink, useNavigate} from 'react-router-dom'
 const Trackorder: React.FC = () => {
 const [val,setval] = useState(1)
-
+const navigate = useNavigate()
 useEffect(()=>{
 
   setTimeout(()=>{
 
     setval(2)
+    navigate('/feedback')
   },3000)
 
 
