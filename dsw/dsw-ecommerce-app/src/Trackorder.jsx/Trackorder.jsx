@@ -11,8 +11,10 @@ useEffect(()=>{
   setTimeout(()=>{
 
     setval(2)
-    navigate('/feedback')
+   
   },3000)
+  let arr = []
+  sessionStorage.setItem("cartarr",JSON.stringify(arr))
 
 
 },[])

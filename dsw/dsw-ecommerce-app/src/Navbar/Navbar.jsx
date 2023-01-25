@@ -105,12 +105,7 @@ const handleadmin=()=>{
               {<Appfun />}
               
               </Flex>
-              <Button>  
-                
-
-                <Search2Icon />
-              
-                </Button>
+             
               
             </HStack>
             

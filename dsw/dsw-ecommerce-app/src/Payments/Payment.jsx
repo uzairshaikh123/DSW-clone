@@ -48,28 +48,28 @@ if(card==""|| cvv==""){
   <Heading textAlign={'center'}>Payments</Heading>
   <hr />
  <div id='payment-cont'>
-    <div id='summary' style={{padding:"20px",border:"1px solid gray"}}>
+    <div id='summary' style={{padding:"20px",border:"1px solid gray",backgroundColor:"black"}}>
 
-       <Heading size='lg'>Summary 🛍️</Heading> 
+       <Heading size='lg' color={"white"}>Order Summary 🛍️</Heading> 
   <hr />
-  <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+  <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"} color={"white"}>
     Name : {data.name}
   </Heading>
   <hr />
-       <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+       <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"} color={"white"}>
     Email : {data.email}
     
   </Heading>
   <hr />
-  <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+  <Heading as='h4' size='md' lineHeight={"70px"} fontFamily={"sans-serif"} color={"white"}>
    Address :{data.houseno}{" ,"}{data.city}{" ,"}{data.district}
   </Heading>
   <hr />
-  <Heading as='h3' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+  <Heading as='h3' size='md' lineHeight={"70px"} fontFamily={"sans-serif"} color={"white"}>
   Contact No :{data.contact}
   </Heading>
   <hr />
-  <Heading as='h3' size='md' lineHeight={"70px"} fontFamily={"sans-serif"}>
+  <Heading as='h3' size='md' lineHeight={"70px"} fontFamily={"sans-serif"} color={"white"}>
     Total Price : ${total}{" "} USD
   </Heading>
     </div>
@@ -88,7 +88,7 @@ if(card==""|| cvv==""){
   <Input placeholder='Enter Your CVV' type={"number"} ref={e=>dref.current['cvv']=e}/>
 </FormControl>
 <button type="submit" className='payment-sub' onClick={handleclick}>
-    Submit
+   PAY
 </button>
 
      </form>
