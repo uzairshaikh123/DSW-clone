@@ -345,7 +345,7 @@ const [name,setname] = useState(u)
 //   ]
 
 const [admin,setAdmin] = useState(false)
-//   localStorage.setItem("Alldata",JSON.stringify(ndata))
+ // localStorage.setItem("Alldata",JSON.stringify(ndata))
 
   let arr = JSON.parse(localStorage.getItem("Alldata"))
   useEffect(()=>{

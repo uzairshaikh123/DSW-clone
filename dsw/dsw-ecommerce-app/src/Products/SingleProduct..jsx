@@ -31,14 +31,17 @@ import { AuthContext } from '../AuthContext/Data';
     let { id } = useParams();
     let Authobj= useContext(AuthContext)
 
-    let {data} = Authobj
-    
+  // let data = JSON.parse(localStorage.getItem("Alldata"))
+  let {data} = Authobj
+  console.log(data)
     useEffect(()=>{
       
       
     let ndata = data.filter((item)=>{
         return item.id==id
     })
+   
+
     // conso/le.log(ndata)
     setarr({...ndata[0]})
 
