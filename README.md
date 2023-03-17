@@ -1,5 +1,6 @@
 ### Deployed Link https://dsw-ecommerce-app-ten.vercel.app/
-
+Admin email:admin@uzair.com
+Admin Password :adminuser
 
 
 # Its a e-commerce website built by react or chakra ui
